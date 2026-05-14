@@ -23,7 +23,7 @@ public class Car {
     public void displayStatus() {
 
         if (booked) {
-            System.out.println(model + " is currently booked.");
+            System.out.println(model + " is booked.");
         } else {
             System.out.println(model + " is available.");
         }

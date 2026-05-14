@@ -19,7 +19,6 @@ public class App {
 
         System.out.println();
 
-        // Book car
         booking.bookCar();
 
         System.out.println();
@@ -28,7 +27,6 @@ public class App {
 
         System.out.println();
 
-        // Exception scenario
         try {
             booking.bookCar();
         } catch (Exception e) {
@@ -37,12 +35,10 @@ public class App {
 
         System.out.println();
 
-        // Release car
         booking.releaseCar();
 
         System.out.println();
 
-        // Exception scenario
         try {
             booking.releaseCar();
         } catch (Exception e) {

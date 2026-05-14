@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,12 +11,14 @@ import com.example.model.Car;
 public class RentalCarBooking {
 
     @Autowired
-    private Car car;
+    private List<Car> cars;
 
     public void bookCar() {
 
+        Car car = cars.get(0);
+
         if (car.isBooked()) {
-            throw new RuntimeException("Car is already booked!");
+            throw new RuntimeException("Car already booked!");
         }
 
         car.setBooked(true);
@@ -23,6 +27,8 @@ public class RentalCarBooking {
     }
 
     public void releaseCar() {
+
+        Car car = cars.get(0);
 
         if (!car.isBooked()) {
             throw new RuntimeException("Car is not booked!");
@@ -34,6 +40,9 @@ public class RentalCarBooking {
     }
 
     public void checkStatus() {
+
+        Car car = cars.get(0);
+
         car.displayStatus();
     }
 }
