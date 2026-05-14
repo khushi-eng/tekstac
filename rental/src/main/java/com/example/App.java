@@ -9,11 +9,10 @@ public class App {
 
     public static void main(String[] args) {
 
-        ApplicationContext context =
+        ApplicationContext context=
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
-        RentalCarBooking booking =
-                context.getBean(RentalCarBooking.class);
+        RentalCarBooking booking = context.getBean(RentalCarBooking.class);
 
         booking.checkStatus();
 
