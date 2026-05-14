@@ -1,0 +1,22 @@
+package com.example.model.account;
+
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("CURRENT")
+public class CurrentAccount extends Account {
+
+    private double overdraftLimit;
+
+    public CurrentAccount() {
+    }
+
+    public double getOverdraftLimit() {
+        return overdraftLimit;
+    }
+
+    public void setOverdraftLimit(double overdraftLimit) {
+        this.overdraftLimit = overdraftLimit;
+    }
+}
