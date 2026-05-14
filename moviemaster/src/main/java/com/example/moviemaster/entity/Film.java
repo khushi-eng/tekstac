@@ -3,78 +3,90 @@ package com.example.moviemaster.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
-public class ProductionHouse {
+public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long houseId;
+    private Long filmId;
 
     @NotBlank
-    private String productionHouseName;
-
-    @Min(1800)
-    private int establishedYear;
+    private String title;
 
     @NotBlank
-    private String chairmanName;
+    private String director;
 
     @NotBlank
-    private String country;
+    private String genre;
 
-    @OneToMany(mappedBy = "productionHouse", cascade = CascadeType.ALL)
-    private List<Film> films;
+    @Positive
+    private double budget;
 
-    public ProductionHouse() {
+    @PastOrPresent
+    private LocalDate releaseDate;
+
+    @ManyToOne
+    @JoinColumn(name = "house_id")
+    private ProductionHouse productionHouse;
+
+    public Film() {
     }
 
-    public Long getHouseId() {
-        return houseId;
+    public Long getFilmId() {
+        return filmId;
     }
 
-    public void setHouseId(Long houseId) {
-        this.houseId = houseId;
+    public void setFilmId(Long filmId) {
+        this.filmId = filmId;
     }
 
-    public String getProductionHouseName() {
-        return productionHouseName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setProductionHouseName(String productionHouseName) {
-        this.productionHouseName = productionHouseName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getEstablishedYear() {
-        return establishedYear;
+    public String getDirector() {
+        return director;
     }
 
-    public void setEstablishedYear(int establishedYear) {
-        this.establishedYear = establishedYear;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
-    public String getChairmanName() {
-        return chairmanName;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setChairmanName(String chairmanName) {
-        this.chairmanName = chairmanName;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public String getCountry() {
-        return country;
+    public double getBudget() {
+        return budget;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setBudget(double budget) {
+        this.budget = budget;
     }
 
-    public List<Film> getFilms() {
-        return films;
+    public LocalDate getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setFilms(List<Film> films) {
-        this.films = films;
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public ProductionHouse getProductionHouse() {
+        return productionHouse;
+    }
+
+    public void setProductionHouse(ProductionHouse productionHouse) {
+        this.productionHouse = productionHouse;
     }
 }
